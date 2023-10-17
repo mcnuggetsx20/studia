@@ -1,34 +1,52 @@
 import java.util.Arrays;
 public class Main {
-    public static double compute(double x, double n, double s){ return (1/(s*Math.sqrt(2*Math.PI))); }
-
-    public static double c1(double x, double n, double s){ return Math.exp((-((x-n)*(x-n))) / (2*s*s)); }
-
-    public static double time(double v, double t){
-        int c = 299792458;
-        return t/(Math.sqrt(1-( (v*v)/(c*c) )));
-    }
-
-    public static double ns(double n){ return (n/Math.E)*(n/Math.E) * Math.sqrt(2*Math.PI*n);}
 
     private static boolean ok (double a, double b, double c){
-        double[] tab = {a, b, c};
-        Arrays.sort(tab);
-        return tab[0] + tab[1] > tab[2];
+        double A = Math.max(a, Math.max(b, c));
+        double C = Math.min(a, Math.min(b, c));
+        double B = a+b+c-A-C;
+        return B+C>A;
     }
-    public static double tri (double a, double b, double c, boolean mode){
+    //obwod
+    public static double perimeter(double a, double b, double c){
+        if(!ok(a,b,c)){ return -1;}
+        return a+b+c;
+    }
+    //pole
+    public static double area (double a, double b, double c){
         if(!ok(a,b,c)){ return -1;}
         
-        //pole
-        if (mode){
-            double p = (a+b+c)/2;
-            return Math.sqrt( p*(p-a)*(p-b)*(p-c) );
-        }
-        return a + b +c;
+        double p = (a+b+c)/2;
+        return Math.sqrt( p*(p-a)*(p-b)*(p-c) );
         //do domu - jaki trojkat z uwagi na kat, jaki trojkat z uwagi na boki(rownoboczny czy co)
+    }
+    //kat
+    public static String angle(double a, double b, double c){
+        if(!ok(a,b,c)){ return "nie da sie zbudowac takiego trojkata!";}
+        double A = Math.max(a, Math.max(b, c));
+        double C = Math.min(a, Math.min(b, c));
+        double B = a+b+c-A-C;
+        String[] vals = {"ostrokatny", "rozwawrtokatny", "prostokatny"};
+
+        int index = (B*B + C*C < A*A) ? 1:0;
+        index += 2 * ( (index==0 && (B*B + C*C == A*A)) ? 1:0);
+        return vals[index];
+
+    }
+    //bok
+    public static String length(double a, double b, double c){
+        if(!ok(a,b,c)){ return "nie da sie zbudowac takiego trojkata!";}
+        if(a==b && b==c){
+            return "rownoboczny";
+        }
+        else if(a==b && b!=c || a==c && c!=b || b==c && c!=a){
+            return "rownoramienny";
+        }
+        return "taki o se zwykly";
+
     }
 
     public static void main(String[] args) {
-        System.out.println(tri(1, 1, 5, true));
+        System.out.println(length());
     }
 }
