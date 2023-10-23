@@ -45,8 +45,14 @@ public class Main {
         return "taki o se zwykly";
 
     }
+    public static void solve(double a, double b, double c){
+        System.out.printf("bok: %s\n", length(a,b,c));
+        System.out.printf("obwod: %f\n", perimeter(a,b,c));
+        System.out.printf("kat: %s\n", angle(a,b,c));
+        System.out.printf("pole: %f\n", area(a,b,c));
+    }
 
     public static void main(String[] args) {
-        System.out.println(length());
+        solve(5, 1, 1);
     }
 }
