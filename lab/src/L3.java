@@ -79,8 +79,8 @@ public class L3{
         System.out.println();
         
         //4
-        System.out.println(nwd_reszta(12, 51));
-        System.out.println(nwd_odejmowanie(51, 12));
+        System.out.println(nwd_reszta(40, 40));
+        System.out.println(nwd_odejmowanie(40, 40));
         return;
     }
 }
