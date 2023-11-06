@@ -12,6 +12,9 @@ public class Tablica{
     public Tablica(int n){
         tab = new int[n];
     }
+    public Tablica(int[] arr){
+        tab = arr.clone();
+    }
 
     public void randomize(int n, int m){
         for(int i = 0; i < tab.length; ++i){
@@ -20,7 +23,7 @@ public class Tablica{
         }
 
         for(int i = tab.length-1; i> -1; --i){
-            roznowartosciowa = roznowartosciowa &&  mp.get(tab[i]) == null;
+            roznowartosciowa = roznowartosciowa &&  (mp.get(tab[i]) == null);
             mp.put(tab[i], i);
         }
     }
@@ -75,22 +78,36 @@ public class Tablica{
         System.out.println(mp.get(ans));
     }
 
-    public boolean czyRoznowartosciowa(){return roznowartosciowa;}
 
     public int[] transform(){
-        if(czyRoznowartosciowa()){return;}
+        if(roznowartosciowa){return tab;}
+        int[] res = new int[mp.size()];
+        int ind = 0;
+        for(int i = 0;i <tab.length;++i){
+            if(mp.get(tab[i])==i){
+                res[ind]=tab[i];
+                ++ind;
+            }
+        }
+        return res;
     }
 
     public int[] getTab(){return tab;}
+    public boolean czyRoznowartosciowa(){return roznowartosciowa;}
 
     public static void main(String args[]){
         Tablica a = new Tablica(6);
         a.randomize(1, 10);
         a.display();
+
+        Tablica b = new Tablica(a.transform());
+        b.display();
+
+        a.reverse();
+        a.display();
         System.out.println(a.find(3));
         a.max();
         a.min();
         System.out.println(a.czyRoznowartosciowa());
-
     }
 }
