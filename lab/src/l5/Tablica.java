@@ -96,8 +96,8 @@ public class Tablica{
     public boolean czyRoznowartosciowa(){return roznowartosciowa;}
 
     public static void main(String args[]){
-        Tablica a = new Tablica(6);
-        a.randomize(1, 10);
+        Tablica a = new Tablica(20);
+        a.randomize(1, 15);
         a.display();
 
         Tablica b = new Tablica(a.transform());
