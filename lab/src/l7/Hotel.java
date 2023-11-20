@@ -68,6 +68,7 @@ public class Hotel{
     }
 
     void listaWolnych(){
+        System.out.println("Stan hotelu (zajete pokoje):");
         for(int i = hotel.length-1; i > -1; --i){
             for(int j = 0; j< hotel[i].length;++j){
                 String toPrint = String.format("%d", hotel[i][j].getNumer());
@@ -81,6 +82,7 @@ public class Hotel{
     }
 
     void listaGosci(){
+        System.out.println("Lista gosci:");
         for(int i = hotel.length-1; i > 0; --i){
             for(int j = 0; j < hotel[i].length; ++j){
                 if(hotel[i][j].getKlient()==null){continue;}
@@ -89,10 +91,25 @@ public class Hotel{
         }
     }
 
+    boolean czyN(int n){
+        int c = 0;
+        for(int i = hotel.length-1; i > 0; --i){
+            if(hotel[i].length < n){continue;}
+            c = 0;
+            for(int j = 0; j < hotel[i].length; ++j){
+                c+= hotel[i][j].czyWolny()? 1: 0;
+                if(c==n){return true;}
+                else if(!hotel[i][j].czyWolny() && c < n){break;}
+            }
+        }
+        return false;
+    }
+
     public void display(){
+        System.out.println("Hotel:");
         for(int i = hotel.length-1; i > -1; --i){
             for(int j = 0; j < hotel[i].length; ++j){
-                System.out.printf("%4d, ", hotel[i][j].getNumer());
+                System.out.printf("%6d", hotel[i][j].getNumer());
             }
             System.out.println();
         }
@@ -109,11 +126,15 @@ public class Hotel{
         h.wynajmij(o2);
         h.wynajmij(o3);
 
-        System.out.println(h.ileWolnych());
+        System.out.printf("Ile wolnych: %d%n", h.ileWolnych());
         h.display();
+        
         h.listaWolnych();
         h.listaGosci();
-        System.out.println(h.znajdzWolny());
+        System.out.println();
+        System.out.printf("Pierwszy wolny pokoj: %d\n", h.znajdzWolny());
+
+
         return;
     }
 }
