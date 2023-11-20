@@ -32,7 +32,7 @@ public class Trojkatna{
             for(int j = 0; j < tab[i].length; ++j){
                 l += tab[i][j];
             }
-            System.out.printf("%3.3f\n", l/tab[i].length);
+            System.out.printf("%.3f\n", l/tab[i].length);
         }
     }
 
