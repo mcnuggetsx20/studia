@@ -37,7 +37,7 @@ public class Hotel{
 
     int wynajmij(Osoba os){
         int ind = znajdzWolny();
-        if(ind == -1){return 1}
+        if(ind == -1){return 1;}
         hotel[ind/100][ind%100].setKlient(os);
         return 0;
     }
