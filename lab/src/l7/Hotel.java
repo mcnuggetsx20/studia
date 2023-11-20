@@ -68,11 +68,12 @@ public class Hotel{
     }
 
     void listaWolnych(){
-        for(int i = 1; i < hotel.length; ++i){
+        for(int i = hotel.length-1; i > -1; --i){
             for(int j = 0; j< hotel[i].length;++j){
-                if(hotel[i][j].czyWolny()){
-                    System.out.printf("%4d, ", hotel[i][j].getNumer());
-                }
+                String toPrint = String.format("%d", hotel[i][j].getNumer());
+                if(!hotel[i][j].czyWolny()){toPrint = "(" + toPrint + ")";}
+                //System.out.printf("%4d, ", hotel[i][j].getNumer());
+                System.out.printf("%6s", toPrint);
             }
             System.out.println();
         }
@@ -110,9 +111,9 @@ public class Hotel{
 
         System.out.println(h.ileWolnych());
         h.display();
-        System.out.println(h.znajdzWolny());
         h.listaWolnych();
         h.listaGosci();
+        System.out.println(h.znajdzWolny());
         return;
     }
 }
