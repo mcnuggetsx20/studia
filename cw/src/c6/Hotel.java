@@ -1,6 +1,7 @@
 public class Hotel{
     Pokoj[][] hotel;
     int[] pokNaPi;
+
     public Hotel(int n, int[] m){
         hotel = new Pokoj[n][];
 
@@ -37,9 +38,56 @@ public class Hotel{
 
     int wynajmij(Osoba os){
         int ind = znajdzWolny();
-        if(ind == -1){return 1}
+        if(ind == -1){return 1;}
         hotel[ind/100][ind%100].setKlient(os);
         return 0;
+    }
+
+    boolean czyWolny(int n){return hotel[n/100][n%100].czyWolny();}
+
+    public int czyOsobaWynajmuje(Osoba os){
+        for(int i = 1; i < hotel.length; ++i){
+            for(int j = 0; j < hotel[i].length; ++j){
+                if(hotel[i][j].equals(os)){
+                    return i*100 + j;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public int zwolnijZajetePrzez(Osoba os){
+        for(int i = 1; i < hotel.length; ++i){
+            for(int j = 0; j < hotel[i].length; ++j){
+                if(hotel[i][j].equals(os)){
+                    hotel[i][j].clear();
+                    return 0;
+                }
+            }
+        }
+        return 1;
+    }
+
+    public void listaWolnych(){
+        for(int i = 1; i < hotel.length; ++i){
+            for(int j = 0; j < hotel[i].length; ++j){
+                if(hotel[i][j].czyWolny()){
+                    System.out.printf("%4d, ", i*100 + j);
+                }
+            }
+        }
+        return;
+    }
+
+    public void listaGosci(){
+        for(int i = 1; i < hotel.length; ++i){
+            for(int j = 0; j < hotel[i].length; ++j){
+                if(!hotel[i][j].czyWolny()){
+                    System.out.println(hotel[i][j].getKlient().toString());
+                }
+            }
+        }
+        return;
     }
 
     public void display(){
@@ -57,6 +105,10 @@ public class Hotel{
         System.out.println(h.ileWolnych());
         h.display();
         System.out.println(h.znajdzWolny());
+        Osoba parowa = new Osoba("michal", "strugarek");
+        h.wynajmij(parowa);
+        h.listaGosci();
+        h.listaWolnych();
         return;
     }
 }
