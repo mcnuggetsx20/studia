@@ -15,12 +15,14 @@ public class Main{
         f.zatrudnij(c);
         f.zatrudnij(b);
 
-        System.out.println();
         f.zwolnij(a);
+        p("lista zatrudnionych");
         f.printList();
 
+        p("\nsuma plac:");
         p(f.sumaPlac());
 
+        p("\nlista z placami");
         f.printListPlaca();
     }
 }
@@ -64,7 +66,7 @@ class Firma{
         int c = 1;
         for(int i = 0; i < tab.length; ++i){
             if(tab[i] == null){continue;}
-            System.out.printf("%3d%12s%8.2f%n", c, tab[i].getNazwisko(), tab[i].getEtat());
+            System.out.printf("%3d %-12s%8.2f%n", c, tab[i].getNazwisko(), tab[i].getEtat());
             ++c;
         }
     }
@@ -72,7 +74,7 @@ class Firma{
         int c = 1;
         for(int i = 0; i < tab.length; ++i){
             if(tab[i] == null){continue;}
-            System.out.printf("%3d%12s%8.2f%8.2f%n", c, tab[i].getNazwisko(), tab[i].getEtat(), tab[i].getPlaca());
+            System.out.printf("%3d %-12s%8.2f%8.2f%n", c, tab[i].getNazwisko(), tab[i].getEtat(), tab[i].getPlaca());
             ++c;
         }
     }
