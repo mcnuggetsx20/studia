@@ -7,8 +7,13 @@ public class Main{
 
         Dom n1 = new Dom("grabiszynska", 500, 120, 2500);
         Mieszkanie n2 = new Mieszkanie("wykladnicza", 100, 50, 1000);
-        Dom n1 = new Dom("Narciarska", 500, 120, 2500);
+        Dom n3 = new Dom("Narciarska", 500, 120, 2500);
 
+        Firma f = new Firma(100000);
+        f.dodajNier(n1);
+        f.dodajNier(n2);
+        f.wypiszWolne();
+        f.dodajNier(n3);
         return;
     }
 }
@@ -27,6 +32,7 @@ class Firma{
             if(tab.get(i).free()){
                 tab.get(i).wynajmij(os);
                 budzet += tab.get(i).getKosztW();
+                return;
             }
         }
     }
@@ -37,6 +43,7 @@ class Firma{
                 tab.get(i).zwolnij();
                 budzet -= tab.get(i).getKosztS();
                 tab.get(i).posprzataj();
+                return;
             }
         }
     }
@@ -46,6 +53,15 @@ class Firma{
                 tab.get(i).zwolnij();
                 budzet -= tab.get(i).getKosztS();
                 tab.get(i).posprzataj();
+                return;
+            }
+        }
+    }
+
+    void wypiszWolne(){
+        for(int i = 0; i < tab.size(); ++i){
+            if(tab.get(i).free()){
+                System.out.println(tab.get(i).getAdres());
             }
         }
     }
