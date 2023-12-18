@@ -8,6 +8,17 @@ import java.util.ArrayList;
 public class Z1{
     public ArrayList<String> tab = new ArrayList<String>();
 
+    public int count(String target){
+        int ans= 0;
+        for(int i = 0; i < tab.size(); ++i){
+            String[] temp = tab.get(i).split("[.,\\s]+");
+            for(int j = 0; j < temp.length; ++j){
+                ans += (temp[j].equals(target)) ? 1: 0;
+            }
+        }
+        return ans;
+    }
+
     public void readFile(String name) throws IOException{
         this.tab = new ArrayList<String>();
         FileReader file = new FileReader(name);
@@ -74,6 +85,7 @@ public class Z1{
         a.printFile();
         a.solve();
         a.copyFile("pliczek", "niezly_plik");
+        System.out.println(a.count("ala"));
         return;
     }
 }
