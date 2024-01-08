@@ -60,7 +60,7 @@ public class Z2{
     public static void main(String[] args) throws FileNotFoundException{
         Z2 a = new Z2();
         //a.userInput();
-        a.readMatrix("z2", true);
+        a.readMatrix("z2", false);
         a.convert();
         a.writeMatrix("zapisano");
         a.display();
