@@ -1,14 +1,20 @@
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.awt.*;
 
 public class Main{
-    static int textRows = 50, textColumns = 16;
+    static Dimension mainSize = new Dimension(300, 500);
+
+    static int textRows = 50, 
+               textColumns = 16,
+               verticalSpacing = 10;
+
+    static String mainTitle = "JAVA_LAB";
+
     public static void main(String[] args){
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
+        frame.setTitle(mainTitle);
+        frame.setSize(mainSize);
 
         JButton buttonF1 = new JButton("funkcja1");
         JButton buttonF2 = new JButton("funkcja2");
@@ -32,7 +38,10 @@ public class Main{
 
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        panel.add(Box.createVerticalStrut(verticalSpacing));
         panel.add(innerPanel);
+        panel.add(Box.createVerticalStrut(verticalSpacing));
         panel.add(scroll);
 
         frame.add(panel);

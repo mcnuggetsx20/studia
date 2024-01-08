@@ -15,9 +15,11 @@ public class Z1{
         return tab;
     }
     public static void writeMatrix(int[][] mat, String name) throws IOException{
+        //inicjacja writerow
         FileWriter file = new FileWriter(name);
         BufferedWriter bw = new BufferedWriter(file);
 
+        //wpisywanie
         bw.write("Macierz"); bw.newLine();
         bw.write(String.format("%d", mat.length)); bw.newLine();
         bw.write(String.format("%d", mat[0].length)); bw.newLine();
@@ -33,12 +35,16 @@ public class Z1{
     }
 
     public static int[][] readMatrix(String name) throws IOException{
+        //inicjacja readerow
         FileReader file = new FileReader(name);
         BufferedReader reader = new BufferedReader(file);
+
+        //niezle zmienne
         int[][] res;
         char[] c = new char[150];
         String[] stringArr;
 
+        //operacje zczytujace i parsujace
         reader.read(c);
         String tempString = new String(c);
         stringArr = tempString.split("[\\s]+");
@@ -69,16 +75,20 @@ public class Z1{
         return sum / size;
     }
 
-    public static void main(String[] args) throws IOException{
-        int[][] a = gen(5, 4);
-        //writeMatrix(a, "macierz");
-        int[][] b = readMatrix("macierz");
-        for(int i = 0; i < b.length; ++i){
-            for(int j = 0; j < b[i].length; ++j){
-                System.out.printf("%4d ", b[i][j]);
+    public static void display(int[][] vp){
+        for(int i = 0; i < vp.length; ++i){
+            for(int j = 0; j < vp[i].length; ++j){
+                System.out.printf("%4d ", vp[i][j]);
             }
             System.out.println();
         }
+    }
+
+    public static void main(String[] args) throws IOException{
+        //int[][] a = gen(5, 4);
+        //writeMatrix(a, "macierz");
+        int[][] b = readMatrix("macierz");
+        display(b);
         System.out.printf("%.3f\n", avg(b));
         return;
     }

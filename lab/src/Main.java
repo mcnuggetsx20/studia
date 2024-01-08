@@ -52,7 +52,13 @@ public class Main {
         System.out.printf("pole: %f\n", area(a,b,c));
     }
 
-    public static void main(String[] args) {
-        solve(5, 1, 1);
+    public static boolean comp(int a, int b){
+        return a>b;
     }
+
+    public static void main(String[] args) {
+        int[] a = new int[5];
+        Arrays.sort(a, comp);
+    }
+
 }

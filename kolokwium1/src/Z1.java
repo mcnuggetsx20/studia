@@ -43,7 +43,7 @@ public class Z1{
     }
 
     public static void main(String[] args){
-        Z1 a = new Z1(15, 100);
+        Z1 a = new Z1(25, 1205);
         a.solve();
     }
 }
