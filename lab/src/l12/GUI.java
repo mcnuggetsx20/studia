@@ -17,10 +17,13 @@ public class GUI{
     static int textRows = 50, 
                textColumns = 16,
                verticalSpacing = 10,
-               FONT_SIZE = 12;
+               FONT_SIZE = 12,
+               currentSelectionStart = 0,
+               currentSelectionEnd = 0;
 
     static String MAIN_TITLE = "JAVA_LAB",
-                  CURRENT_FONT = "Arial";
+                  CURRENT_FONT = "Arial",
+                  normalText = "";
 
     static JFrame frame = new JFrame();
     static JTextField currentSelectedText = new JTextField("");
@@ -30,8 +33,8 @@ public class GUI{
     static JScrollPane scroll = new JScrollPane(area);
 
     static JButton buttonF1 = new JButton("Font");
-    static JButton buttonF2 = new JButton("F2");
-    static JButton buttonF3 = new JButton("F3");
+    static JButton buttonF2 = new JButton("CAP");
+    static JButton buttonF3 = new JButton("NOR");
 
     static Utils utils = new Utils();
 
@@ -104,6 +107,37 @@ public class GUI{
                 return;
             }
         });
+
+        //capitalize
+        buttonF2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev){
+                if(area.getSelectedText() == null){return;}
+                String res = "";
+                normalText = area.getText();
+                for(int i = 0; i < normalText.length(); ++i){
+                    if( (int) normalText.charAt(i) >= 97 && (int) normalText.charAt(i) <= 122
+                            && i >= currentSelectionStart && i < currentSelectionEnd){
+                        //res += (char) Math.min( ((int) tempText.charAt(i) - 32), (int) tempText.charAt(i));
+                        res += (char) ((int) normalText.charAt(i) - 32);
+                    }
+                    else{
+                        res += normalText.charAt(i);
+                    }
+                }
+                area.setText(res);
+                System.out.println(res);
+                return;
+            }
+        });
+
+        buttonF3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ev){
+                area.setText(normalText);
+                return;
+            }
+        });
     }
 
     public static void areaSetup(){
@@ -118,7 +152,12 @@ public class GUI{
                 // zaznaczono tekst
                 String selectedText = area.getSelectedText();
                 currentSelectedText.setText(utils.sliceText(selectedText, 6));
-        StyleConstants.setFontFamily(defaultStyle, "SansSerif");
+                StyleConstants.setFontFamily(defaultStyle, "SansSerif");
+
+                currentSelectionStart = Math.min(ev.getDot(), ev.getMark());
+                currentSelectionEnd = Math.max(ev.getDot(), ev.getMark());
+                System.out.printf("%d %d%n", currentSelectionStart, currentSelectionEnd);
+                return;
             }
         });
     }
