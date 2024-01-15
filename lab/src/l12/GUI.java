@@ -126,7 +126,7 @@ public class GUI{
                     }
                 }
                 area.setText(res);
-                System.out.println(res);
+                //System.out.println(res);
                 return;
             }
         });
@@ -156,7 +156,7 @@ public class GUI{
 
                 currentSelectionStart = Math.min(ev.getDot(), ev.getMark());
                 currentSelectionEnd = Math.max(ev.getDot(), ev.getMark());
-                System.out.printf("%d %d%n", currentSelectionStart, currentSelectionEnd);
+                //System.out.printf("%d %d%n", currentSelectionStart, currentSelectionEnd);
                 return;
             }
         });
