@@ -48,7 +48,7 @@ public class Z1B{
 
         int[][] a = rect();
 
-        bw.write(String.format("minx, maxx, miny, maxy"));
+        bw.write(String.format("minx, maxx, miny, maxy\n"));
         for(int[] i: a){
             bw.write(String.format("%3d%3d\n", i[0], i[1])); 
         }
@@ -59,7 +59,7 @@ public class Z1B{
             bw.write(String.format("%3d%3d\n", i[0], i[1])); 
         }
 
-        bw.write(String.format("Posortowane"));
+        bw.write(String.format("Posortowane\n"));
         for(Map.Entry <int[], Double> en : sort()){
             bw.write(String.format("%3d%3d%8.2f\n", en.getKey()[0], en.getKey()[1],en.getValue()));
         }
