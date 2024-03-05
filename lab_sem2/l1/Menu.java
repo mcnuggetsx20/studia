@@ -22,7 +22,7 @@ public class Menu{
     }
 
     public int listen() throws NumberFormatException{
-        System.out.println("Wybierz opcję:");
+        System.out.printf("-> ");
         String input = scanner.nextLine();
 
         try{
@@ -31,5 +31,11 @@ public class Menu{
         catch(NumberFormatException exception){
             return -2;
         }
+    }
+
+    public String listenArgument(){
+        System.out.printf("++ ");
+        String input = scanner.nextLine();
+        return input;
     }
 }

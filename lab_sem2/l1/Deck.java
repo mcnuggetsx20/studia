@@ -3,10 +3,10 @@ import java.util.ArrayList;
 
 public class Deck{
     ArrayList <ArrayList<Card>>arr = new ArrayList<>();
-    int size;
+    //int size;
 
     public Deck(){
-        size = 0;
+        //size = 0;
         //ustawiamy 52 puste miejsca w tablicy
         for(int i = 0; i < 52; ++i){arr.add(new ArrayList<>());}
             //System.out.printf("%s %d", arr.get(i).toString(), i);
@@ -25,7 +25,7 @@ public class Deck{
             index = (curr_val -1)*4 + curr_col;
             //arr.set(index, new Card(curr_val, curr_col));
             arr.get(index).add(new Card(curr_val, curr_col));
-            ++size;
+            //++size;
 
             //generujemy parametry dla nastepnej karty
             curr_val = rand.nextInt(13 +1); 
@@ -46,5 +46,33 @@ public class Deck{
         }
     }
 
-    public int getSize(){return size;}
+    public void cardsBy(String s){
+        for(ArrayList<Card> cardBox : arr){
+            for(Card card : cardBox){
+                if( card.valueIs(s) || card.colorIs(s) ){
+                    System.out.printf("%s", card.toString());
+                }
+            }
+        }
+    }
+
+    public int removeDuplicates(){
+        int counter = 0;
+        for(int i = 0; i < arr.size(); ++i){
+            if(arr.get(i).size() > 1){
+                counter += arr.get(i).size() - 1;
+                arr.get(i).subList(1, arr.get(i).size()).clear();
+            }
+        }
+        //size -= counter;
+        return counter;
+    }
+
+    public int getSize(){
+        int ans = 0;
+        for(ArrayList cardBox: arr){
+            ans += cardBox.size();
+        }
+        return ans;
+    }
 }

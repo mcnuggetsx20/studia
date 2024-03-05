@@ -4,13 +4,8 @@ public class Card{
     String[] valueMap = new String[14];
     String[] colorMap = new  String[4];
 
-    int value, 
-        color;
-
-    public Card(){
-        value = -1;
+    int value = -1, 
         color = -1;
-    }
 
     public Card(int val, int col){
         value = val;
@@ -41,11 +36,14 @@ public class Card{
     public boolean equals(Card card){return value == card.getValue() && color == card.getColor();}
 
     public String toString(){
-        if(value == -1 || color == -1){
+        if(value== -1 || color == -1){
             //System.out.printf("wartosc lub kolor jest rowna -1: %d:%d\n", value, color);
             return "";
         }
         return String.format("%10s %10s\n", valueMap[value], colorMap[color]); 
         //jesli wypisze tu "null null" to pewnie uzylo konstruktora bez argumentow, czyli mamy do czynienia z pusta karta
     }
+
+    public boolean valueIs(String s){return valueMap[value].equals(s);}
+    public boolean colorIs(String s){return colorMap[color].equals(s);}
 }
