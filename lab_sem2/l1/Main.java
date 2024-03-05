@@ -2,6 +2,8 @@ public class Main{
     public static void main(String[] args){
 
         String[] options = {
+            "-1. Wyjście",
+            "-2. Pomoc",
             "1. Utworzenie Arralist (karty mogą się powtarzać),",
             "2. Wyświetlanie wszystkich elementów Arraylist,",
             "3. Wyświetlanie liczby elementów Arraylist,",
