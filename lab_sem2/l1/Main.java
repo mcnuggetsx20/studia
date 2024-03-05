@@ -11,6 +11,34 @@ public class Main{
         };
 
         Menu menu = new Menu(options);
-        menu.start();
+        menu.show();
+
+        Deck deck = null;
+        int arg;
+        while( (arg=menu.listen()) != -1){
+            switch(arg){
+                case 1:
+                    deck = new Deck();
+                    System.out.printf("Utworzono %d kart\n", deck.getSize());
+                    break;
+                case 2:
+                    if(deck != null){
+                        deck.showCards();
+                    }
+                    else{
+                        System.out.println("Nie stworzyles jeszcze żadnej karty!");
+                    }
+                    break;
+                case 3:break;
+                case 4:break;
+                case 5:break;
+                case 6:break;
+                default:
+                    System.out.println("Nie ma takiej opcji!");
+                    break;
+            }
+        }
+        System.out.println("Opuszczanie...");
+        System.exit(0);
     }
 }

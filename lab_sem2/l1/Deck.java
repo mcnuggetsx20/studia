@@ -2,11 +2,14 @@ import java.util.Random;
 import java.util.ArrayList;
 
 public class Deck{
-    ArrayList<Card>arr = new ArrayList<>();
+    ArrayList <ArrayList<Card>>arr = new ArrayList<>();
+    int size;
 
     public Deck(){
+        size = 0;
         //ustawiamy 52 puste miejsca w tablicy
-        for(int i = 0; i < 52; ++i){arr.add(-1);}
+        for(int i = 0; i < 52; ++i){arr.add(new ArrayList<>());}
+            //System.out.printf("%s %d", arr.get(i).toString(), i);
 
         Random rand = new Random();
 
@@ -20,7 +23,9 @@ public class Deck{
 
             //obliczamy index na ktory wstawimy nowa karte; w ten sposob beda one od razu posortowane
             index = (curr_val -1)*4 + curr_col;
-            arr.add(index, new Card(curr_val, curr_col));
+            //arr.set(index, new Card(curr_val, curr_col));
+            arr.get(index).add(new Card(curr_val, curr_col));
+            ++size;
 
             //generujemy parametry dla nastepnej karty
             curr_val = rand.nextInt(13 +1); 
@@ -29,7 +34,17 @@ public class Deck{
     }
 
     public void addCard(int val, int col){
-        int index = (curr_val -1)*4 + curr_col;
-        arr.add(index, new Card(val, col));
+        int index = (val -1)*4 + col;
+        arr.get(index).add(new Card(val, col));
     }
+
+    public void showCards(){
+        for(ArrayList<Card> cardBox : arr){
+            for(Card card : cardBox){
+                System.out.printf("%s", card.toString());
+            }
+        }
+    }
+
+    public int getSize(){return size;}
 }
