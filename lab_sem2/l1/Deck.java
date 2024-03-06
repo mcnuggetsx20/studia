@@ -1,5 +1,6 @@
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Deck{
     ArrayList <ArrayList<Card>>arr = new ArrayList<>();
@@ -70,8 +71,9 @@ public class Deck{
 
     public int getSize(){
         int ans = 0;
-        for(ArrayList cardBox: arr){
-            ans += cardBox.size();
+        Iterator<ArrayList<Card>> it = arr.iterator();
+        while(it.hasNext()){
+            ans += it.next().size();
         }
         return ans;
     }
