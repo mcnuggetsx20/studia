@@ -10,7 +10,6 @@ public class Deck{
         //size = 0;
         //ustawiamy 52 puste miejsca w tablicy
         for(int i = 0; i < 52; ++i){arr.add(new ArrayList<>());}
-            //System.out.printf("%s %d", arr.get(i).toString(), i);
 
         Random rand = new Random();
 
@@ -24,7 +23,6 @@ public class Deck{
 
             //obliczamy index na ktory wstawimy nowa karte; w ten sposob beda one od razu posortowane
             index = (curr_val -1)*4 + curr_col;
-            //arr.set(index, new Card(curr_val, curr_col));
             arr.get(index).add(new Card(curr_val, curr_col));
             //++size;
 
