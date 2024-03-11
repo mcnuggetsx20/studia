@@ -1,4 +1,5 @@
-public abstract class Pracownik{
+import java.io.Serializable;
+public abstract class Pracownik implements Serializable{
     String nazwisko = null,
            imie = null,
            stanowisko = null;
@@ -30,7 +31,7 @@ public abstract class Pracownik{
     }
 
     public String toString(){
-        return String.format("%10s %10s %15d %10s %3d %6f %6f", nazwisko, imie, pesel, stanowisko, staz, this.obliczPensje(), stawka);
+        return String.format("%20s | %20s | %15d | %20s | %3d | %6.2f", nazwisko, imie, pesel, stanowisko, staz, this.obliczPensje());
     }
 
     public abstract double obliczPensje();

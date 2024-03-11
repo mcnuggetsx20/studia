@@ -11,7 +11,7 @@ public class PracownikEtatowy extends Pracownik{
             double _stawka,
             double _etat
     ){
-        super(_imie, _nazwisko, _pesel, _stanowisko, _staz);
+        super(_imie, _nazwisko, _pesel, _stanowisko, _staz, _stawka);
         etat = _etat;
     }
 
