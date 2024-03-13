@@ -31,7 +31,7 @@ public abstract class Pracownik implements Serializable{
     }
 
     public String toString(){
-        return String.format("%20s | %20s | %15d | %20s | %3d | %6.2f", nazwisko, imie, pesel, stanowisko, staz, this.obliczPensje());
+        return String.format("%-20s | %-20s | %15d | %-20s | %3d | %6.2f", nazwisko, imie, pesel, stanowisko, staz, this.obliczPensje());
     }
 
     public abstract double obliczPensje();

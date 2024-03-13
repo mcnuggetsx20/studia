@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Iterator;
 
 public class Main{
     static Pracownik[] arr;
@@ -32,11 +33,11 @@ public class Main{
     public static void display(){
         System.out.println(
         "----------------------------------------------------------------------------------------------------------\n"+
-        String.format("%20s | %20s | %15s | %20s | %3s | %6s\n", "Imie", "Nazwisko", "Pesel", "Stanowisko", "Staz", "Pensja")+
+        String.format("%-20s | %-20s | %-15s | %-20s | %-3s | %-6s\n", "Imie", "Nazwisko", "Pesel", "Stanowisko", "Staz", "Pensja")+
         "----------------------------------------------------------------------------------------------------------");
 
-        for(Pracownik i : arr){
-            i.wyswietl();
+        for(Iterator<Pracownik> iter = new ArrayIterator<>(arr); iter.hasNext();){
+            iter.next().wyswietl();
         }
         System.out.println("----------------------------------------------------------------------------------------------------------");
     }
