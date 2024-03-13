@@ -1,10 +1,8 @@
 import java.util.Iterator;
-public class ArrayFromK implements Iterator<Integer>{
-    int k;
-    public ArrayFromK(int k){
-        this.k = k;
-    }
 
+public class Fib implements Iterator<Integer>{
+    int a= 1, b = 0;
+    
     @Override
     public boolean hasNext(){
         return true;
@@ -12,18 +10,18 @@ public class ArrayFromK implements Iterator<Integer>{
 
     @Override
     public Integer next(){
-        ++k;
-        //System.out.printf("teraz k wynosi: %d\n", k-1);
-        return k-1;
+        int ans = a+b;
+        a = b;
+        b = ans;
+        return ans;
     }
 
     public static void main(String[] args){
-        ArrayFromK iter = new ArrayFromK(5);
+        Fib iter = new Fib();
         int temp = iter.next();
         while(temp < 50){
             System.out.println(temp);
             temp = iter.next();
         }
-        return;
     }
 }
